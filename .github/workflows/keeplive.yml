@@ -1,0 +1,27 @@
+name: MC Keepalive
+
+on:
+  schedule:
+    - cron: "0 */6 * * *"   # 每 6 小时一次（UTC 0/6/12/18 点）
+  workflow_dispatch:         # 允许手动触发
+
+jobs:
+  keepalive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - run: npm install
+
+      - name: Run bot
+        run: node bot.js
+        env:
+          MC_SERVER: "服务器地址:端口"   # 占位符，例如 example.com:25565
+          MC_USERNAME: "KeepAliveBot"
+          MC_VERSION: ""                 # 留空自动检测，也可填 1.20.1 等
+          STAY_MINUTES: "5"
