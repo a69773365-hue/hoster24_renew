@@ -1,0 +1,12 @@
+{
+  "name": "mc-keepalive",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node bot.js",
+    "whitelist": "node gen-whitelist.js"
+  },
+  "dependencies": {
+    "mineflayer": "^4.23.0"
+  }
+}
